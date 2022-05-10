@@ -1,0 +1,9 @@
+ARG VERSION=3.15
+FROM alpine:$VERSION
+ARG VERSION
+ENV VERSION ${VERSION}
+ENV MSG "Hello world !!"
+RUN apk update && apk upgrade && apk --update --no-cache add bash
+RUN echo "Version $VERSION"
+ENTRYPOINT ["bash"]
+CMD ["-c", "echo $VERSION $MSG"]
